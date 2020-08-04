@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Curso JavaScript</title>
+    </head>
+    <body>
+        <div id="app">
+            <button onclick="criarQuadrados()">Gerador de quadrados</button>
+        </div>
+
+        <script>
+            var n = 1
+            function criarQuadrados() {
+                n++
+                var divBox = document.createElement('div')
+                divBox.setAttribute('onmouseover', `trocarCor('id${n}')`)
+                divBox.setAttribute('style', 'background-color: #f00;')
+                divBox.setAttribute('id', `id${n}`)
+
+                divBox.style.width = 100
+                divBox.style.height = 100
+                divBox.style.margin = 10
+
+                var div = document.querySelector('#app')
+                div.appendChild(divBox)
+            }
+
+            function getRandomColor() {
+                var letters = '0123456789abcdef'
+                var color = '#'
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random()* 16)]
+                }
+                return color
+            }
+
+            function trocarCor(p) {
+                var box = document.querySelector(`#${p}`)
+                box.style.backgroundColor= getRandomColor()
+            }
+
+        </script>
+    </body>
+</html>
